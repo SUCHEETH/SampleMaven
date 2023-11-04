@@ -2,7 +2,7 @@ node('master')
 {
   stage('ContinuousDownload') 
   {
-    git 'https://github.com/selenium-saikrishna/maven.git'
+    git 'https://github.com/SUCHEETH/SampleMaven.git'
   } 
   stage('ContinuousBuild') 
   {
@@ -14,12 +14,12 @@ node('master')
   }
   stage('ContinuousTesting') 
   {
-    git 'https://github.com/selenium-saikrishna/TestingOnLinux.git'
+    git 'https://github.com/SUCHEETH/LinuxTesting.git'
     sh 'java -jar  /var/lib/jenkins/workspace/Pipeline/testing.jar'
   }
   stage('ContinuousDelivery') 
   {
-      input message: 'Waiting for approval from DM', submitter: 'Srinivas'
+      input message: 'Waiting for approval from DM', submitter: 'SUCHEETH'
     sh 'scp /var/lib/jenkins/workspace/Pipeline/webapp/target/webapp.war vagrant@10.10.10.33:/var/lib/tomcat7/webapps/prodenv.war'
   }
   
